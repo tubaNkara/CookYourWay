@@ -11,7 +11,8 @@
 --ruddy-blue: #70a8d9ff;
 --aquamarine: #9efcd3ff;
 --celadon: #9decbaff; 
---darkmodebg: #282828 */
+--darkmodebg: #282828 
+buttonbg:#3a4550;*/
 
 
 * {
@@ -23,7 +24,7 @@
 
 header {
   width: 100vw;
-  color: black;
+  color: #3a4550;;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +32,7 @@ header {
   position: fixed;
   top:0;
   z-index: 10;
-  background-color: #a2d9ff
+  background-color: whitesmoke;
 }
 
 header ul{
@@ -48,7 +49,7 @@ header ul li{
 }
 
 li a{
-  color: black;
+  color: #3a4550;
   transition: all 0.3s;
   padding:2px 10px;
   border-radius: 10px;
@@ -82,16 +83,18 @@ section{
 
 .home .left h1{
   margin-bottom: 1rem;
+ color: #3a4550;
 }
 
 .home button{
   color: white;
   border:none;
-  background-color: #70a8d9ff;
+  background-color: #3a4550;
   width: 200px;
   padding: 0.5rem;
-  border-radius: 0;
+  border-radius: 0.7rem;
 }
+
 
 .home a:hover{
   color: white;
@@ -101,6 +104,18 @@ section{
 
 .home .left h5{
   margin:2rem 0;
+}
+
+.bg {
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: -1; /* İçeriğin altında kalsın */
+}
+.bg svg {
+  width: 100vw;
+  height: auto;
+  display: block;
 }
 
 .bg svg{
@@ -116,6 +131,7 @@ section{
   gap:2.5rem;
   grid-template-columns: repeat(auto-fit,13rem);
   cursor:pointer
+  
 }
 
 .card{
@@ -193,6 +209,8 @@ section{
   z-index: 9;
 }
 
+
+
 .form{
   width: 71%;
   margin: 0 auto;
@@ -204,12 +222,20 @@ section{
   height: 3px;
   text-align: center;
 }
+.form label{
+  position: initial;
+  margin-left: -10px;
+}
+.form-control{ 
 
-.form-control{
-  display: flex;
-  justify-content: space-between;
+  display: flexbox;
+  justify-content: flex-start;
   gap:1rem;
-  margin-top: 1rem;
+  padding: 15px ;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow: hidden;
+
 }
 
 .form-control .input{
@@ -225,6 +251,7 @@ section{
   border-radius: 4px;
   flex-basis: 70%;
   padding: 2px;
+  
 }
 
 .form button{
@@ -303,7 +330,7 @@ section{
 
 .active{
   color:black !important;
-  background-color: #d4f6e8;
+  background-color: #97d2fbff;
 }
 
 
