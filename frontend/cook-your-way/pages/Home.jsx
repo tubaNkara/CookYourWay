@@ -1,24 +1,40 @@
 import React from 'react';
 import yaglama from '../assets/yaglama.png';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import RecipeItems from '../components/RecipeItems';
 import { useNavigate } from 'react-router-dom';
-import { AddFoodRecipe } from './AddFoodRecipe'; 
+import AddFoodRecipe from './AddFoodRecipe';
+import { useState } from 'react';
+
 
 export default function Home() {
   const navigate=useNavigate()
+  const [isOpen, setIsOpen] =useState(false)
+
+    const addRecipe = () => {
+        let token = localStorage.getItem("token")
+        if (token)
+            navigate("/addRecipe")
+        else {
+            setIsOpen(true)
+        }
+    }
+
     return(
 <>
 <Navbar/>
 <section className='home'>
-<div className='left'>
+<div className='left'> 
+  
     <h1>
         Food Recipe
     </h1>
     <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum quibusdam autem quaerat molestiae necessitatibus pariatur temporibus suscipit modi, odit aliquid, obcaecati aliquam,t. Eum, maiores eos!</h5>
-    <button onClick={()=navigate("/addRecipe")}>Share your recipe</button>
- </div>
+     
+     <button onClick={()=>{navigate("/addRecipe")}}>Share your recipe</button>
+    
+   </div>
+  
  <div className="right">
     <img src={yaglama} width="450px" height="300px" ></img>
  </div>
@@ -30,6 +46,7 @@ export default function Home() {
     viewBox="0 0 900 450"
     width="900"
     height="450"
+    
   >
     <rect x="0" y="0"  fill="#e1eff6"></rect>
     <path d="M0 332L60 339L120 288L180 303L240 336L300 320L360 324L420 303L480 297L540 333L600 330L660 299L720 325L780 302L840 288L900 308L900 451L840 451L780 451L720 451L660 451L600 451L540 451L480 451L420 451L360 451L300 451L240 451L180 451L120 451L60 451L0 451Z" fill="#97d2fb" style={{ transition: "0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}></path>
@@ -42,6 +59,7 @@ export default function Home() {
   </svg>
 
 </div>
+  {(isOpen) && <Modal onClose={() => setIsOpen(false)}><InputForm setIsOpen={() => setIsOpen(false)} /></Modal>}
 <div className="recipe">
     <RecipeItems/>
 </div>

@@ -66,6 +66,7 @@ li .login{
 
 header h2{
   margin-left: 1rem;
+  color: #3a4550;
 }
 
 section{
@@ -83,18 +84,23 @@ section{
 
 .home .left h1{
   margin-bottom: 1rem;
- color: #3a4550;
+  color: #3a4550;
 }
 
-.home button{
-  color: white;
-  border:none;
-  background-color: #3a4550;
-  width: 200px;
-  padding: 0.5rem;
-  border-radius: 0.7rem;
+button{
+  background-color: #9efcd3ff;
+  color: #3a4550;
+  padding: 12px 24px;
+  border: solid 2px #70a8d9ff;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
-
+button:hover{
+  background-color: #307bbd;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .home a:hover{
   color: white;
@@ -110,7 +116,7 @@ section{
   left: 0;
   bottom: 0;
   width: 100vw;
-  z-index: -1; /* İçeriğin altında kalsın */
+  z-index: -1;
 }
 .bg svg {
   width: 100vw;
@@ -121,6 +127,7 @@ section{
 .bg svg{
   position: absolute;
   bottom: 0;
+  pointer-events: none;
   
 }
 
@@ -212,55 +219,72 @@ section{
 
 
 .form{
-  width: 71%;
-  margin: 0 auto;
-  text-align: center;
+  border: #2c4860 double 2px;
+  position: relative;
+  width: 30%;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color:  rgba(151, 209, 251, 0.112);
 }
 
-.form-header{
-  background-color: #d4f6e8;
-  height: 3px;
-  text-align: center;
-}
 .form label{
-  position: initial;
-  margin-left: -10px;
+  padding: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #3a4550;
+  margin: 0px 330px 0px 0px;
+  
 }
 .form-control{ 
-
-  display: flexbox;
-  justify-content: flex-start;
-  gap:1rem;
-  padding: 15px ;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  overflow: hidden;
+ display:flex;
+ width: 90%;
+ margin: 0.1rem auto;
+ padding: 0.2rem;
+ flex-direction: column;
+ gap:0.5rem;
+ text-align:left;
 
 }
 
 .form-control .input{
-  flex-basis: 70%;
-  border:1px solid rgb(156 163 175);
-  border-radius: 4px;
+  position: relative;
+  border-radius: 4px; 
   height: 30px;
-  padding: 2px;
+  padding: 4px;
+  
+
+}
+.form-control .input-btn{
+  margin:5px auto;
+  display: block;
+  font-size: 15px;
+  flex-direction: column;
+  width: 50%;
+  min-width: unset;
+  box-sizing: border-box; 
 }
 
 .form-control .input-textarea{
   border: 1px solid rgb(156 163 175);
   border-radius: 4px;
   flex-basis: 70%;
-  padding: 2px;
+  padding: 12px;
   
 }
 
+
 .form button{
-  margin:2rem 0;
-  border:none;
+  margin:5px auto;
+  display: block;
   background-color: #d4f6e8;
-  font-size: 14px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  flex-direction: column;
+  width: 50%;
+  min-width: unset;
+  box-sizing: border-box; 
 }
+
 
 .form p{
   cursor: pointer;
