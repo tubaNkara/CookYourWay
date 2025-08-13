@@ -6,20 +6,40 @@ export default function AddFoodRecipe() {
     const [recipeData, setRecipeData] = useState({})
     const navigate = useNavigate()
     const onHandleChange = (e) => {
-        let val = (e.target.name === "ingredients") ? e.target.value.split(",") : (e.target.name === "file") ? e.target.files[0] : e.target.value
-        setRecipeData(pre => ({ ...pre, [e.target.name]: val }))
+        console.log(recipeData);
+        let {name,value,files} = e.target;
+        if(name=== "ingredients"){
+            value=value.split(",");
+        }else if (name==="file"){
+            value=files[0];
+        }
+         setRecipeData(prev => ({...prev, [name]: value}))
     }
+
+
     const onHandleSubmit = async (e) => {
-        e.preventDefault()
-        console.log(recipeData)
-        await axios.post("http://localhost:5000/recipe", recipeData,{
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("title", recipeData.title);
+        formData.append("time", recipeData.time);
+        formData.append("ingredients", recipeData.ingredients);
+        formData.append("instructions", recipeData.instructions);
+        formData.append("file", recipeData.file);
+
+       try{
+         await axios.post("http://localhost:5000/recipe", formData,{
             headers:{
                 'Content-Type':'multipart/form-data',
                 'authorization':'bearer '+localStorage.getItem("token")
             }
-        })
-            .then(() => navigate("/"))
+        });
+        navigate("/");
+       }  catch(err){
+        console.log("Add recipe error:", err.response?.data || err.message);
+       
     }
+    };
     return (
         <>
             <div className='container'>

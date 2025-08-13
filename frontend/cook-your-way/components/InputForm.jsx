@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios'
 
 
-export default function InputForm({setIsOpen}) {
+export default function Inputform({setIsOpen}) {
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
 const [isSignUp, setIsSignUp]=useState(false)
@@ -26,21 +26,22 @@ await axios.post(`http://localhost:5000/${endpoint}`,{email,password})
 
 
   return (
-    <div className='logbox'>
-     <form action="" className="form" onSubmit={handleOnSubmit}>
-        <div className="form-control">
+    
+     <form action="" className="logform" onSubmit={handleOnSubmit}>
+        <div className="logform-control">
             <label>Email </label>
             <input type="email" className='input' value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your email" required/>
         </div>
-        <div className="form-control">
+        <div className="logform-control">
             <label>Password </label>
             <input type="password" className='input'  value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Enter your password" required/>
         </div>
-        <button type="submit" className='btn'>{(isSignUp) ? "Sign up" : "Log in"}</button>
-        <br />
-   { (error!="") && <h6 className="error">{error}</h6>}
+        <button type="submit" >{(isSignUp) ? "Sign up" : "Log in"}</button> 
+        { (error!="") && <h6 className="error">{error}</h6>}
         <p onClick={()=>setIsSignUp(pre=>!pre)}>{(isSignUp) ? "Already have an account" : "create new account"}</p>
+        <br />
+  
         </form> 
-    </div>
+  
   )
 }

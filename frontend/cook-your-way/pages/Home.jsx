@@ -3,7 +3,8 @@ import yaglama from '../assets/yaglama.png';
 import Navbar from '../components/Navbar';
 import RecipeItems from '../components/RecipeItems';
 import { useNavigate } from 'react-router-dom';
-import AddFoodRecipe from './AddFoodRecipe';
+import Modal from '../components/Modal';
+import InputForm from '../components/InputForm';
 import { useState } from 'react';
 
 

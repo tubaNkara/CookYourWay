@@ -24,30 +24,36 @@ const getRecipe=async(req,res)=>{
 }
 
 const addRecipe=async(req,res)=>{
-    console.log(req.user)
-    const {title,ingredients,instructions,time}=req.body;
-
-    if(!title || !ingredients || !instructions)
-    {
-       return res.status(400).json({message:"Required fields can't be empty"});
-    }
-    const imageName = req.file?.filename || null;
 try{
+    console.log("User from token:", req.user);
+    console.log("Body:", req.body);
+    console.log("File:", req.file);
+
+    const{ title, ingredients, instructions,time} = req.body;
+
+    if (!title || !ingredients || !instructions){
+        return res.status(400).json({message: "Required fields cant't be  empty"});
+    }
+    const imageName = req.file? req.file.filename : null;
+
     const newRecipe = await Recipes.create({
         title,
         ingredients,
         instructions,
         time,
-        coverImage: req.file.filename,
-        createdBy: req.user.id,
-    }); 
-    return res.json(newRecipe);
+        coverImage:imageName,
+        createdBy:req.user?.id || null,
+    });
+
+    return res.status(201).json(newRecipe);
+
 } catch (error){
     console.log("Add recipe error:", error);
-    return res.status(500).json({message: "Server Error"})
-}
-
-  
+    return res.status(500).json({
+        message:"Server Error",
+        error:error.message,
+    });
+}  
 };
 
 const editRecipe=async(req,res)=>{
